@@ -12,3 +12,7 @@ node_modules
 
 # Ignore SASS config files
 .sass-cache
+
+#Ignore prettier configuration
+.prettierrc
+.prettierignore
