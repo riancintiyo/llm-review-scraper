@@ -3,8 +3,8 @@
 Scraping Google Maps review using Puppeteer and create Sentiment Analysis summary using LLM
 
 ## Installation
-
-Clone the repository and run npm install.
+- Make sure you have installed Node.js
+- Clone the repository.
 
 ```bash
 npm install
@@ -14,7 +14,7 @@ npm install
 
 ```javascript
 
-# change url '##newURL'
+# change url '##newURL' in index.js
 await page.goto("##newURL", { waitUntil: "domcontentloaded"});
 ```
 
@@ -24,6 +24,8 @@ Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
+
+Thanks to [Kylie Ying](https://www.kylieying.com/) for inspiring the ideas.
 
 ## License
 

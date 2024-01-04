@@ -11,7 +11,7 @@ const getReviews = async () => {
   const page = await browser.newPage();
 
   await page.goto(
-    'https://www.google.com/maps/place/Floating+Market+Lembang/@-6.8310521,107.6228131,15z/data=!4m8!3m7!1s0x2e68e11c4a9d27e5:0x7bcd1ace08104f55!8m2!3d-6.8179174!4d107.6187923!9m1!1b1!16s%2Fg%2F11b7kjv1h6?entry=ttu',
+    'https://www.google.com/maps/place/Ayam+Gepuk+Pak+Gembus+Ciumbuleuit/@-6.8732282,107.6061942,18.56z/data=!4m6!3m5!1s0x2e68e6f1f7d25dbd:0xdd90d8ed39e022b9!8m2!3d-6.8741218!4d107.6046802!16s%2Fg%2F11fzb1460k?entry=ttu',
     { waitUntil: 'domcontentloaded' },
   );
 
@@ -36,9 +36,7 @@ const getReviews = async () => {
     );
 
     const reviewList = Array.from(commentNodes).map((item) => {
-      return {
-        textContent: `${item.querySelector('.wiI7pd').textContent}\n`,
-      };
+      return item.textContent;
     });
 
     return reviewList;
@@ -64,10 +62,10 @@ const run = async () => {
   let dataPrompt = '';
 
   for (let i = 0; i <= 3; i++) {
-    dataPrompt += reviews[i].textContent;
+    dataPrompt += reviews[i];
   }
 
-  const result = await model.generateContent(indoPrompt + dataPrompt);
+  const result = await model.generateContent(firstPrompt + dataPrompt);
   const response = await result.response;
   const text = response.text();
   console.log(text);
