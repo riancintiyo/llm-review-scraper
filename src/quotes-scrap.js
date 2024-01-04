@@ -1,4 +1,8 @@
 import puppeteer from 'puppeteer';
+import dotenv from 'dotenv';
+
+dotenv.config();
+const apiKey = process.env.API_KEY || 'default_api_key';
 
 const getQuotes = async () => {
   const browser = await puppeteer.launch({ headless: false, defaultViewport: null });
@@ -13,8 +17,6 @@ const getQuotes = async () => {
 
     // create array of objects for the quotes
     return Array.from(quoteNodes).map((item) => {
-        
-      // Array.from() => Static method create new shallow copied array
       const text = item.querySelector('.text').innerText;
 
       const author = item.querySelector('.author').innerText;
@@ -22,6 +24,8 @@ const getQuotes = async () => {
       return { text, author };
     });
   });
+
+  console.log(quotes);
 
   await browser.close();
 };

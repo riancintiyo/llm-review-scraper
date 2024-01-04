@@ -4,7 +4,7 @@ Scraping Google Maps review using Puppeteer and create Sentiment Analysis summar
 
 ## Installation
 
-Clonse the repository and run npm install.
+Clone the repository and run npm install.
 
 ```bash
 npm install
