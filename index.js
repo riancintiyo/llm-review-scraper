@@ -10,20 +10,8 @@ const getQuotes = async () => {
     // get page data 
     const quotes = await page.evaluate(() => {
         const quoteNodes = document.querySelectorAll(".quote");
-
-        // First Approach
-        // const texts = [];
-
-        // quoteNodes.forEach( (item) => {
-        //     const text = item.querySelector(".text").innerText;
-
-        //     const author = item.querySelector(".author").innerText;
-
-        //     texts.push({ text, author });
-        // });
-
         
-        // Second Approach
+        // create array of objects for the quotes
         return Array.from(quoteNodes).map( (item) => { // Array.from() => Static method create new shallow copied array
             const text = item.querySelector(".text").innerText;
 
@@ -32,8 +20,7 @@ const getQuotes = async () => {
             return { text, author };
         });
     });
-
-    console.log(quotes);
+    
     await browser.close();
 
 };
