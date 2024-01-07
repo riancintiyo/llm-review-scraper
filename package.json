@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "npx prettier --write .",
-    "dev": "node src/index.js"
+    "dev": "node src/index-playwright.js",
+    "cz": "cz commit"
   },
   "keywords": [],
   "author": "",
