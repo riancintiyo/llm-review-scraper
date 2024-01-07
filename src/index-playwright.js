@@ -25,8 +25,34 @@ const main = async () => {
       reviews.push(text);
     }
   }
-  console.log(reviews);
+  
   await browser.close();
+  return reviews;
 };
 
-main();
+const run = async () => {
+    //get reviews list
+    const reviews = await main();
+  
+    // For text-only input, use the gemini-pro model
+    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+  
+    let firstPrompt = `I have collected some reviews of a place I was considering visiting.\n
+          Can you summarize the reviews for me?. The reviews are bellow:`;
+  
+    let indoPrompt = `Saya sudah mengumpulkan beberapa review dari tempat yang akan saya kunjungi. \n
+          Tolong, bisakah kamu membuat kesimpulan dari review tersebut untuk saya?. Adapun reviewnya seperti ini:`;
+  
+    let dataPrompt = '';
+  
+    for (let i = 0; i <= reviews.length ; i++) {
+      dataPrompt += reviews[i];
+    }
+  
+    const result = await model.generateContent(firstPrompt + dataPrompt);
+    const response = await result.response;
+    const text = response.text();
+    console.log(text);
+  };
+  
+  run().catch((error) => console.log(error));
