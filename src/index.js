@@ -48,7 +48,8 @@ const getReviews = async () => {
 };
 
 const run = async () => {
-  const reviews = await getReviews();
+  //get reviews list
+  // const reviews = await getReviews();
 
   // For text-only input, use the gemini-pro model
   const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
@@ -61,11 +62,14 @@ const run = async () => {
 
   let dataPrompt = '';
 
-  for (let i = 0; i <= 3; i++) {
-    dataPrompt += reviews[i];
-  }
+  // for (let i = 0; i <= 3; i++) {
+  //   dataPrompt += reviews[i];
+  // }
 
-  const result = await model.generateContent(firstPrompt + dataPrompt);
+  // const result = await model.generateContent(firstPrompt + dataPrompt);
+  const result = await model.generateContent(
+    'Please find existing social media information about Sony Arianto Kurniawan, Programmer and member of technical staff from Indonesia. And please return the result in JSON format',
+  );
   const response = await result.response;
   const text = response.text();
   console.log(text);

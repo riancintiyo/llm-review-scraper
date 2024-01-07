@@ -3,6 +3,7 @@
 Scraping Google Maps review using Puppeteer and create Sentiment Analysis summary using LLM
 
 ## Installation
+
 - Make sure you have installed Node.js
 - Clone the repository.
 
