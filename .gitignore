@@ -16,3 +16,7 @@ node_modules
 #Ignore prettier configuration
 .prettierrc
 .prettierignore
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

@@ -15,20 +15,40 @@ const main = async () => {
   );
   await page.waitForSelector('.MyEned', { state: 'visible' });
 
-  const reviewList = await page.$$('.MyEned');
+  // const reviewList = await page.$$('.MyEned');
 
-  for (const review of reviewList) {
-    const btn = await review.$('button.w8nwRe.kyuRq');
-    if (btn) {
+  // for (const review of reviewList) {
+  //   const btn = await review.$('button.w8nwRe.kyuRq');
+  //   if (btn) {
+  //     await btn.click();
+  //     const text = await review.$eval('.wiI7pd', (element) => element.textContent.trim());
+  //     reviews.push(text);
+  //   }
+  // }
+
+  const reviewList = page.locator('.MyEned');
+  const el = await reviewList.count();
+  console.log('Total review is:', el);
+
+  for ( let i = 0; i < el; i++) {
+    let rev = reviewList.nth(i);
+    let btn = rev.locator('button.w8nwRe.kyuRq');
+    let textEl = rev.locator('.wiI7pd');
+
+    if(btn){
       await btn.click();
-      const text = await review.$eval('.wiI7pd', (element) => element.textContent.trim());
+      const text = await textEl.textContent();
       reviews.push(text);
     }
+
   }
+  console.log(reviews);
   
   await browser.close();
   return reviews;
 };
+
+main();
 
 const run = async () => {
     //get reviews list

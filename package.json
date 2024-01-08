@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "format": "npx prettier --write .",
     "dev": "node src/index-playwright.js",
     "cz": "cz commit"
@@ -18,9 +17,9 @@
     "playwright": "^1.40.1",
     "puppeteer": "^21.6.1"
   },
-  "types": "module",
   "type": "module",
   "devDependencies": {
+    "@types/node": "^20.10.7",
     "prettier": "3.1.1"
   }
 }
