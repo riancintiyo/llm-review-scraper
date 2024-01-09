@@ -1,26 +1,26 @@
 {
-  "name": "scraper-llm",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "format": "npx prettier --write .",
-    "dev": "node src/index-playwright.js",
-    "cz": "cz commit"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@google/generative-ai": "^0.1.3",
-    "dotenv": "^16.3.1",
-    "playwright": "^1.40.1",
-    "prompt-sync": "^4.2.0",
-    "puppeteer": "^21.6.1"
-  },
-  "type": "module",
-  "devDependencies": {
-    "@types/node": "^20.10.7",
-    "prettier": "3.1.1"
-  }
+	"name": "scraper-llm",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"format": "npx prettier --write .",
+		"dev": "node src/index-playwright.js",
+		"cz": "cz commit"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@google/generative-ai": "^0.1.3",
+		"dotenv": "^16.3.1",
+		"playwright": "^1.40.1",
+		"prompt-sync": "^4.2.0",
+		"puppeteer": "^21.6.1"
+	},
+	"type": "module",
+	"devDependencies": {
+		"@types/node": "^20.10.7",
+		"prettier": "3.1.1"
+	}
 }

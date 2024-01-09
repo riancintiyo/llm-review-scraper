@@ -4,7 +4,6 @@ Scraping Google Maps review using Puppeteer and create Sentiment Analysis summar
 
 > **Notes:** Current update still not supported short link Google Maps.
 
-
 <details>
 <summary>Installation</summary>
 
@@ -12,14 +11,14 @@ Scraping Google Maps review using Puppeteer and create Sentiment Analysis summar
 
 - Make sure you have installed Node.js
 - Clone the repository.
-- On **.env** file add **API_KEY** from Google Gemini 
+- On **.env** file add **API_KEY** from Google Gemini
 - Run:
-    ```bash
-    npm install
-    ```
 
-- On **.env** file add **API_KEY** from Google Gemini 
+  ```bash
+  npm install
+  ```
 
+- On **.env** file add **API_KEY** from Google Gemini
 
 </details>
 
@@ -30,7 +29,8 @@ Scraping Google Maps review using Puppeteer and create Sentiment Analysis summar
 npm run install
 npm run dev
 ```
-Paste Google Maps Review URL on terminal using command `CTRL` + `SHIFT` + `V` 
+
+Paste Google Maps Review URL on terminal using command `CTRL` + `SHIFT` + `V`
 
 ## Contributing
 

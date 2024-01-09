@@ -7,7 +7,12 @@ const prompt = promptSync();
 dotenv.config();
 const genAI = new GoogleGenerativeAI(process.env.API_KEY || 'default_api_key');
 
-const main = async (url) => {
+const getPlace = async (place) => {
+	const browser = await pw.chromium.launch({ headless: true });
+    const page = await browser.newPage();
+};
+
+const getReview = async (url) => {
 	const browser = await pw.chromium.launch({ headless: true });
 	const page = await browser.newPage();
 	let reviews = [];
@@ -37,11 +42,11 @@ const main = async (url) => {
 	return reviews;
 };
 
-const run = async (url) => {
+const run = async (keyword) => {
 	console.log('===== Running the code, please wait... =====');
 
 	//get reviews list
-	const reviews = await main(url);
+	const reviews = await getReview(url);
 
 	console.log('===== One Process Finished =====');
 
@@ -66,10 +71,10 @@ const run = async (url) => {
 	console.log(text);
 };
 
-const url = prompt('Paste Google Maps URL here (use SHIFT + CTRL + V):');
+const keyword = prompt('Search for place here:');
 
-if (url && url.includes('maps')) {
-	run(url).catch((error) => console.log(error));
+if (keyword) {
+	run(keyword).catch((error) => console.log(error));
 } else {
-	console.error('Url cannot be empty and URL should only paste from Google Maps');
+	console.error('Keyword cannot be empty');
 }
