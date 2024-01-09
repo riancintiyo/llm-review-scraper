@@ -2,22 +2,32 @@
 
 Scraping Google Maps review using Puppeteer and create Sentiment Analysis summary using LLM
 
+<details>
+<summary>Installation</summary>
+
 ## Installation
 
 - Make sure you have installed Node.js
 - Clone the repository.
+- On **.env** file add **API_KEY** from Google Gemini 
+- Run:
+    ```bash
+    npm install
+    ```
 
-```bash
-npm install
-```
+- On **.env** file add **API_KEY** from Google Gemini 
+
+
+</details>
 
 ## Usage
 
 ```javascript
-
-# change url '##newURL' in index.js
-await page.goto("##newURL", { waitUntil: "domcontentloaded"});
+// after adding API_KEY run:
+npm run install
+npm run dev
 ```
+Paste Google Maps Review URL on terminal using command `CTRL` + `SHIFT` + `V` 
 
 ## Contributing
 
