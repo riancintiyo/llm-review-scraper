@@ -8,10 +8,10 @@ dotenv.config();
 const genAI = new GoogleGenerativeAI(process.env.API_KEY || 'default_api_key');
 
 const main = async (url) => {
-  if (url == '' || !url.includes('maps')) {
-    console.error('Url cannot be empty and URL should only paste from Google Maps');
-    return;
-  }
+  // if (url == '' || !url.includes('maps')) {
+  //   console.error('Url cannot be empty and URL should only paste from Google Maps');
+  //   return;
+  // }
 
   const browser = await pw.chromium.launch({ headless: true });
   const page = await browser.newPage();
