@@ -1,6 +1,9 @@
 # LLM Review Scraper
 
-Scraping Google Maps review using Puppeteer and create Sentiment Analysis summary using LLM
+Scraping Google Maps review using Puppeteer and create Sentiment Analysis summary using LLM.
+
+> **Notes:** Current update still not supported short link Google Maps.
+
 
 <details>
 <summary>Installation</summary>
