@@ -10,30 +10,30 @@ const genAI = new GoogleGenerativeAI(process.env.API_KEY || 'default_api_key');
 const getPlace = async (place) => {
 	let selectedUrl = '';
 	const browser = await pw.chromium.launch({ headless: true });
-    const page = await browser.newPage();
+	const page = await browser.newPage();
 
 	await page.goto('https://www.google.com/maps');
 	await page.waitForSelector('.searchboxinput.xiQnY');
 	await page.locator('.searchboxinput.xiQnY').fill(`${place}`);
 	await page.locator('#searchbox-searchbutton').click();
-    await page.waitForFunction(
-        () => {
-            return document.querySelector('.L1xEbb') || document.querySelector('.yx21af.XDi3Bc');
-        },
-        { timeout: 50000 }
-    );
+	await page.waitForFunction(
+		() => {
+			return document.querySelector('.L1xEbb') || document.querySelector('.yx21af.XDi3Bc');
+		},
+		{ timeout: 50000 },
+	);
 
 	const isList = await page.evaluate(() => {
 		const resultEl = document.querySelector('.fontTitleLarge.IFMGgb');
 		const detailEl = document.body.querySelector('.yx21af.XDi3Bc');
-		return ( resultEl && !detailEl);
+		return resultEl && !detailEl;
 	});
 
-	if(isList){
+	if (isList) {
 		await page.waitForSelector('.Nv2PK.THOPZb.CpccDe');
 		const places = await page.evaluate(() => {
-			const listBox = Array.from(document.body.querySelectorAll(".hfpxzc"));
-			const results = listBox.map(item => {
+			const listBox = Array.from(document.body.querySelectorAll('.hfpxzc'));
+			const results = listBox.map((item) => {
 				const label = item.getAttribute('aria-label');
 				const href = item.getAttribute('href');
 				return { label: label, href: href };
@@ -46,11 +46,10 @@ const getPlace = async (place) => {
 
 		const selectedPlace = prompt('Please input number to select places:');
 
-		if(!selectedPlace) throw new Error('The input cannot be empty');
-		
+		if (!selectedPlace) throw new Error('The input cannot be empty');
+
 		const selectedHref = places.anchor[parseInt(selectedPlace)].href;
 		selectedUrl = selectedHref;
-
 	} else {
 		await page.waitForFunction(() => window.location.href.includes('?entry=ttu'), { timeout: 30000 });
 		const currentURl = await page.evaluate(() => {
@@ -99,7 +98,7 @@ const run = async (keyword) => {
 	// Get url from selected place
 	const url = await getPlace(keyword);
 
-	console.log('final url is:',url);
+	console.log('final url is:', url);
 
 	//get reviews list
 	const reviews = await getReview(url);
@@ -108,11 +107,10 @@ const run = async (keyword) => {
 
 	console.log('review is:', reviews);
 
-	if( reviews.split(' ')[0] == 'Sorry' ) {
+	if (reviews.split(' ')[0] == 'Sorry') {
 		console.log(reviews);
-		throw new Error ('No review available');
+		throw new Error('No review available');
 	} else {
-		
 		const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
 
 		let firstPrompt = `I have collected some reviews of a place I was considering visiting.\n
